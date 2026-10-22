@@ -1,0 +1,6 @@
+{
+  "name": "Marketboard",
+  "description": "Professional stock market dashboard for US, NSE, and BSE with real-time indicators, charts, comparisons, and investment calculator.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
