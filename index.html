@@ -3,6 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>
+    // Ensure window.fetch has both getter and setter so Chrome extensions and test runners can safely intercept fetch
+    (function() {
+      try {
+        var _fetch = window.fetch;
+        Object.defineProperty(window, 'fetch', {
+          get: function() { return _fetch; },
+          set: function(val) { _fetch = val; },
+          configurable: true,
+          enumerable: true
+        });
+        if (typeof Window !== 'undefined' && Window.prototype) {
+          try {
+            Object.defineProperty(Window.prototype, 'fetch', {
+              get: function() { return _fetch; },
+              set: function(val) { _fetch = val; },
+              configurable: true,
+              enumerable: true
+            });
+          } catch (eProto) {}
+        }
+      } catch (e) {}
+    })();
+  </script>
   <title>Marketboard — Stock Market Dashboard</title>
   <meta name="description" content="Professional stock market dashboard for US, NSE, and BSE with real-time indicators, charts, comparisons, and investment calculator." />
   <meta property="og:title" content="Marketboard — Stock Market Dashboard" />
